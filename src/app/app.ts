@@ -1,12 +1,15 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 
 @Component({
+  // Le sélécteur css qui identifie notre composant
+  // Si on veut appeler le composant on doit mettre une balise
+  // <app-root/>
   selector: 'app-root',
-  imports: [RouterOutlet],
+  // Ici je définis les dépendances de mon template
+  imports: [],
+  // Le fichier HTML que le composant gére
   templateUrl: './app.html',
+  // C'est le CSS de CE COMPOSANT
   styleUrl: './app.css'
 })
-export class App {
-  protected readonly title = signal('ngDocapost30326');
-}
+export class App {}
