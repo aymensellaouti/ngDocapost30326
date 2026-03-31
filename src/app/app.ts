@@ -1,4 +1,6 @@
 import { Component, signal } from '@angular/core';
+import { First } from "./component/first/first";
+import { Second } from "./component/second/second";
 
 @Component({
   // Le sélécteur css qui identifie notre composant
@@ -6,10 +8,10 @@ import { Component, signal } from '@angular/core';
   // <app-root/>
   selector: 'app-root',
   // Ici je définis les dépendances de mon template
-  imports: [],
+  imports: [First, Second],
   // Le fichier HTML que le composant gére
   templateUrl: './app.html',
   // C'est le CSS de CE COMPOSANT
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
 export class App {}

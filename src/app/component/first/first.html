@@ -1,0 +1,15 @@
+<div  class="alert alert-secondary">
+  <!-- Binde l'attribut hidden
+    avec l'attribut isHidden
+  -->
+  <p [hidden]="isHidden">Bonjour {{ name }}</p>
+  <!-- Quand tu clique sur le boutton
+    appelle la méthode showHide
+  -->
+  <button
+    (click)="showHide()"
+    class="btn btn-danger">
+    show/hide
+  </button>
+  <app-second/>
+</div>

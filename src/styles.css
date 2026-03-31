@@ -1,2 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'bootstrap';
+@import 'bootstrap-icons';
+
+/*
+1- télécharger le framework ou la librairie (il faut la chercher dans npmjs.com
+  généralement la commande est npm i nomBiblio
+2- L'ajouter si en global dans styles.css
+3- L'utiliser (voir la doc)
+*/
