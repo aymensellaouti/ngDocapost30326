@@ -8,16 +8,20 @@ import { Second } from "../second/second";
   styleUrl: './first.css',
 })
 export class First {
-  // State
+  // State :  L'état
   name = "aymen";
   /**
    * var qui gére l'affichage
    * ou non d'un élément
    */
   isHidden = false;
-
-  // Comportement
+  message = "";
+  // Behavior : Comportement
   showHide() {
     this.isHidden = !this.isHidden;
+  }
+
+  changeMessage(newMessage: string) {
+    this.message = newMessage;
   }
 }

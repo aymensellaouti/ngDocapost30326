@@ -1,4 +1,4 @@
-<div  class="alert alert-secondary">
+<div class="alert alert-secondary">
   <!-- Binde l'attribut hidden
     avec l'attribut isHidden
   -->
@@ -6,6 +6,9 @@
   <!-- Quand tu clique sur le boutton
     appelle la méthode showHide
   -->
+
+  <input #myInput (change)="changeMessage(myInput.value)" type="text">
+  Le contenu de l'input est: {{message}}
   <button
     (click)="showHide()"
     class="btn btn-danger">
