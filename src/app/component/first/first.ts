@@ -16,6 +16,7 @@ export class First {
    */
   isHidden = false;
   message = "";
+  color = 'green'
   // Behavior : Comportement
   showHide() {
     this.isHidden = !this.isHidden;

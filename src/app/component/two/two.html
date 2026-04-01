@@ -1,0 +1,7 @@
+<p (click)="twoWay = 'new Value'">two works : {{twoWay}}</p>
+
+<!-- MAintenan input et la propriété twoWay ne font plus qu'un
+  si je change l'input la propriété change
+  si je change la propriété l'input change
+-->
+<input [(ngModel)]="twoWay" type="text" class="form-control">
