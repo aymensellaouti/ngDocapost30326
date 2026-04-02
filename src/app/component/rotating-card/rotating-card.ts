@@ -10,8 +10,18 @@ import { FormsModule } from '@angular/forms';
 })
 export class RotatingCard {
   // State
+  constructor() {
+    // setTimeout(() => {
+    //   console.log('cc')
+    // },2000);
+  }
   name = 'sellaouti';
   firstname = 'aymen';
   job = 'Enseignant';
   path = 'rotating_card_profile3.png';
+  somme2P5() {
+    console.log('Je calcule 2 + 5');
+
+    return 2 + 5;
+  }
 }

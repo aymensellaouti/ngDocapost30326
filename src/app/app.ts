@@ -4,6 +4,8 @@ import { Second } from "./component/second/second";
 import { Color } from './component/color/color';
 import { Two } from "./component/two/two";
 import { RotatingCard } from "./component/rotating-card/rotating-card";
+import { Counter } from "./signals/counter/counter";
+import { Som } from "./signals/som/som";
 
 @Component({
   // Le sélécteur css qui identifie notre composant
@@ -11,7 +13,7 @@ import { RotatingCard } from "./component/rotating-card/rotating-card";
   // <app-root/>
   selector: 'app-root',
   // Ici je définis les dépendances de mon template
-  imports: [Color, Two, RotatingCard],
+  imports: [Color, Two, RotatingCard, Counter, Som],
   // Le fichier HTML que le composant gére
   templateUrl: './app.html',
   // C'est le CSS de CE COMPOSANT

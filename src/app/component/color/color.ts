@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 
 @Component({
   selector: 'app-color',
@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './color.css',
 })
 export class Color {
+
   /**
    * @var la couleur par défaut
    */
@@ -15,7 +16,7 @@ export class Color {
   /**
    * @var La couleur de ma div
    */
-  color = this.defaultColor;
+  color = signal(this.defaultColor);
 
   // Behaviour
   /**
@@ -23,11 +24,14 @@ export class Color {
    * @param newColor : la nouvelle couleur
    */
   changeColor(newColor: HTMLInputElement) {
-    this.color = newColor.value;
+    this.color.set(newColor.value);
     newColor.value = '';
   }
 
+  /**
+   * Reset la couleur du background de la div
+   */
   reset() {
-    this.color = this.defaultColor;
+    this.color.set(this.defaultColor);
   }
 }
