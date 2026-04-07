@@ -2,23 +2,23 @@
 
 <div class="row">
   <div class="col">
-    Prix HT<input type="number" class="form-control"></div>
+    Prix HT<input  [(ngModel)]="priceHt" type="number" class="form-control"></div>
   <div class="col">
     TVA
-    <input type="number" class="form-control"></div>
+    <input  [(ngModel)]="taxe" type="number" class="form-control"></div>
   <div class="col">
     Quantité
-    <input type="number" class="form-control"></div>
+    <input  [(ngModel)]="qty" type="number" class="form-control"></div>
 </div>
 
 <div class="row">
   <div class="col alert alert-primary">
-    Prix Unitaire TTC:
+    Prix Unitaire TTC: {{unitaireTtc()}}
   </div>
   <div class="col alert alert-success">
-    Prix Total TTC:
+    Prix Total TTC: {{totalTtc()}}
   </div>
   <div class="col alert alert-danger">
-    Discount:
+    Discount: {{discount()}}
   </div>
 </div>
