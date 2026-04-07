@@ -11,6 +11,9 @@ import { CvCard } from "../cv-card/cv-card";
 })
 export class CvPage {
   // State de la page
+  /**
+   * @var la liste des cvs
+   */
   cvs = signal<Cv[]>([
     new Cv(1, 'Acosta Matuz', 'Rene Ivan', 'Dev', '12345678', 'rotating_card_profile2.png', 20),
     new Cv(2, 'Lim', 'SIU MUONG', 'Dev', '12345676', 'rotating_card_profile3.png', 20),
@@ -18,5 +21,12 @@ export class CvPage {
     new Cv(4, 'Zitouni', 'Aymen', 'Dev', '12345679', 'rotating_card_profile3.png', 20),
   ]);
 
+  /**
+   * @var représente le cv sélectionné
+   */
   selectedCv = signal<Cv | null>(null);
+
+  getSelectedCv(cv: Cv) {
+    this.selectedCv.set(cv);
+  }
 }
