@@ -20,6 +20,7 @@ export class CvPage {
     new Cv(2, 'Lim', 'SIU MUONG', 'Dev', '12345676', 'rotating_card_profile3.png', 20),
     new Cv(3, 'Zelmat', 'Mohamed', 'Dev', '12345677', 'rotating_card_profile2.png', 20),
     new Cv(4, 'Zitouni', 'Aymen', 'Dev', '12345679', 'rotating_card_profile3.png', 20),
+    new Cv(5, 'Cohen', 'David', 'Dev', '12345680', 'rotating_card_profile2.png', 20),
   ]);
 
   /**
