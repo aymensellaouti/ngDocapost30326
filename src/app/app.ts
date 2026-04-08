@@ -11,6 +11,7 @@ import { Pere } from "./commInterCompo/pere/pere";
 import { CvPage } from "./cv/cv-page/cv-page";
 import { Ngstyle } from "./directives/ngstyle/ngstyle";
 import { MiniWordComponent } from "./directives/mini-word/mini-word.component";
+import { Ngclass } from "./directives/ngclass/ngclass";
 
 @Component({
   // Le sélécteur css qui identifie notre composant
@@ -18,7 +19,7 @@ import { MiniWordComponent } from "./directives/mini-word/mini-word.component";
   // <app-root/>
   selector: 'app-root',
   // Ici je définis les dépendances de mon template
-  imports: [TtcComponent, Som, Pere, CvPage, Ngstyle, MiniWordComponent],
+  imports: [TtcComponent, Som, Pere, CvPage, Ngstyle, MiniWordComponent, Ngclass],
   // Le fichier HTML que le composant gére
   templateUrl: './app.html',
   // C'est le CSS de CE COMPOSANT
