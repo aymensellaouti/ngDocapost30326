@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { Cv } from '../model/cv';
 import { CvList } from "../cv-list/cv-list";
 import { CvCard } from "../cv-card/cv-card";
@@ -8,6 +8,7 @@ import { CvCard } from "../cv-card/cv-card";
   imports: [CvList, CvCard],
   templateUrl: './cv-page.html',
   styleUrl: './cv-page.css',
+  //changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CvPage {
   // State de la page
