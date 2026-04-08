@@ -4,9 +4,11 @@
     'on': isOn(),
     'off': !isOn()
   }"
-  class="lampe">ngclass works!</div>
+  class="lampe" appRainbow>ngclass works!</div>
 
 
   <div appHighlight>test</div>
   <div [in]="'green'" [out]="'lightblue'" appHighlight>test</div>
-  <div [in]="'pink'" appHighlight>test</div>
+  <div [in]="'pink'" appHighlight appRainbow>test</div>
+
+  <input type="text" appRainbow>
