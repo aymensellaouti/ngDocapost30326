@@ -1,9 +1,11 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { Cv } from '../model/cv';
 import { CvList } from "../cv-list/cv-list";
 import { CvCard } from "../cv-card/cv-card";
 import { CurrencyPipe, DatePipe, UpperCasePipe } from '@angular/common';
 import { Btc2usdPipe } from '../../pipes/btc2usd-pipe';
+import { LoggerService } from '../../services/logger.service';
+import { HelloService } from '../../services/hello.service';
 
 @Component({
   selector: 'app-cv-page',
@@ -21,15 +23,20 @@ export class CvPage {
     new Cv(1, 'Acosta Matuz', 'Rene Ivan', 'Dev', '12345678', 'rotating_card_profile2.png', 20),
     new Cv(2, 'Lim', 'SIU MUONG', 'Dev', '12345676', 'rotating_card_profile3.png', 20),
     new Cv(3, 'Zelmat', 'Mohamed', 'Dev', '12345677', 'rotating_card_profile2.png', 20),
-    new Cv(4, 'Zitouni', 'Aymen', 'Dev', '12345679', 'rotating_card_profile3.png', 20),
-    new Cv(5, 'Cohen', 'David', 'Dev', '12345680', 'rotating_card_profile2.png', 20),
+    new Cv(4, 'Zitouni', 'Aymen', 'Dev', '12345679', '', 20),
+    new Cv(5, 'Cohen', 'David', 'Dev', '12345680', '         ', 20),
   ]);
-
   /**
    * @var représente le cv sélectionné
    */
   selectedCv = signal<Cv | null>(null);
   today = signal(new Date());
+  loggerService = inject(LoggerService);
+  helloService = inject(HelloService);
+  constructor() {
+    this.loggerService.log('cc je suis le cvComponent');
+    this.helloService.sayHello();
+  }
   getSelectedCv(cv: Cv) {
     this.selectedCv.set(cv);
   }
