@@ -2,10 +2,12 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { Cv } from '../model/cv';
 import { CvList } from "../cv-list/cv-list";
 import { CvCard } from "../cv-card/cv-card";
+import { CurrencyPipe, DatePipe, UpperCasePipe } from '@angular/common';
+import { Btc2usdPipe } from '../../pipes/btc2usd-pipe';
 
 @Component({
   selector: 'app-cv-page',
-  imports: [CvList, CvCard],
+  imports: [CvList, CvCard, DatePipe, UpperCasePipe, Btc2usdPipe, CurrencyPipe],
   templateUrl: './cv-page.html',
   styleUrl: './cv-page.css',
   //changeDetection: ChangeDetectionStrategy.OnPush
@@ -27,7 +29,7 @@ export class CvPage {
    * @var représente le cv sélectionné
    */
   selectedCv = signal<Cv | null>(null);
-
+  today = signal(new Date());
   getSelectedCv(cv: Cv) {
     this.selectedCv.set(cv);
   }
