@@ -8,30 +8,28 @@ import { LoggerService } from '../../services/logger.service';
 import { HelloService } from '../../services/hello.service';
 import { TodoService } from '../../todo/service/todo.service';
 import { ToastrService } from 'ngx-toastr';
+import { CvService } from '../services/cv.service';
+import { EmbaucheComponent } from "../embauche/embauche.component";
 
 @Component({
   selector: 'app-cv-page',
-  imports: [CvList, CvCard, DatePipe, UpperCasePipe, Btc2usdPipe, CurrencyPipe],
+  imports: [CvList, CvCard, DatePipe, UpperCasePipe, Btc2usdPipe, CurrencyPipe, EmbaucheComponent],
   templateUrl: './cv-page.html',
   styleUrl: './cv-page.css',
   //changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CvPage {
   // State de la page
+
+  cvService = inject(CvService);
   /**
    * @var la liste des cvs
    */
-  cvs = signal<Cv[]>([
-    new Cv(1, 'Acosta Matuz', 'Rene Ivan', 'Dev', '12345678', 'rotating_card_profile2.png', 20),
-    new Cv(2, 'Lim', 'SIU MUONG', 'Dev', '12345676', 'rotating_card_profile3.png', 20),
-    new Cv(3, 'Zelmat', 'Mohamed', 'Dev', '12345677', 'rotating_card_profile2.png', 20),
-    new Cv(4, 'Zitouni', 'Aymen', 'Dev', '12345679', '', 20),
-    new Cv(5, 'Cohen', 'David', 'Dev', '12345680', '         ', 20),
-  ]);
+  cvs = this.cvService.getCvs();
   /**
    * @var représente le cv sélectionné
    */
-  selectedCv = signal<Cv | null>(null);
+  selectedCv = this.cvService.getSelectedCv();
   today = signal(new Date());
   loggerService = inject(LoggerService);
   helloService = inject(HelloService);
@@ -42,8 +40,5 @@ export class CvPage {
     this.loggerService.log('cc je suis le cvComponent');
     this.helloService.sayHello();
     this.toastr.info('Bienvenu dans notre cvTech')
-  }
-  getSelectedCv(cv: Cv) {
-    this.selectedCv.set(cv);
   }
 }

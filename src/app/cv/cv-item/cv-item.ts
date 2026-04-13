@@ -1,6 +1,7 @@
-import { Component, input, output } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import { Cv } from '../model/cv';
 import { DefaultImagePipe } from '../pipes/default-image-pipe';
+import { CvService } from '../services/cv.service';
 
 @Component({
   selector: 'app-cv-item',
@@ -12,10 +13,12 @@ export class CvItem {
   // C'est quoi mon état et pour pour chaque attribut est ce que
   // je l'expose a l'exterieur ou pas (est ce que c'est un input)
   cv = input.required<Cv>();
-
+  size = input(50);
+  cvService = inject(CvService);
   //selectCv = output<Cv>();
 
   onSelectCv() {
    // this.selectCv.emit(this.cv());
+   this.cvService.selectCv(this.cv());
   }
 }
