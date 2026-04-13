@@ -1,19 +1,21 @@
-import { Injectable, Signal, signal } from "@angular/core";
+import { inject, Injectable, Signal, signal } from "@angular/core";
 import { Todo } from "../model/todo";
+import { LoggerService } from "../../services/logger.service";
 
 @Injectable({
   providedIn: 'root',
 })
 export class TodoService {
   #todos = signal<Todo[]>([]);
-  todos = this.#todos.asReadonly();
+  logger = inject(LoggerService);
+  //todos = this.#todos.asReadonly();
   /**
    * elle retourne la liste des todos
    *
    * @returns Todo[]
    */
   getTodos(): Signal<Todo[]> {
-    return this.todos;
+    return this.#todos.asReadonly();
   }
 
   /**
@@ -22,7 +24,11 @@ export class TodoService {
    * @param todo: Todo
    *
    */
-  addTodo(todo: Todo): void {}
+  addTodo(todo: Todo): void {
+    this.#todos.update(
+      (todos) => [...todos, todo]
+    )
+  }
 
   /**
    * Delete le todo s'il existe
@@ -30,11 +36,16 @@ export class TodoService {
    * @param todo: Todo
    * @returns boolean
    */
-  deleteTodo(todo: Todo): void {}
+  deleteTodo(todo: Todo): void {
+    // Non pas bien il ne va pas notifier les consomateurs du signal this.#todos().filter((actualTodo) => actualTodo != todo);
+    this.#todos.update(todos=>todos.filter((actualTodo) => actualTodo != todo));
+  }
 
   /**
    * Logger la liste des todos
    * @returns void
    */
-  logTodos() {}
+  logTodos() {
+    this.logger.log(this.#todos());
+  }
 }

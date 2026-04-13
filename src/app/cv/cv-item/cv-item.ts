@@ -13,9 +13,9 @@ export class CvItem {
   // je l'expose a l'exterieur ou pas (est ce que c'est un input)
   cv = input.required<Cv>();
 
-  selectCv = output<Cv>();
+  //selectCv = output<Cv>();
 
   onSelectCv() {
-    this.selectCv.emit(this.cv());
+   // this.selectCv.emit(this.cv());
   }
 }

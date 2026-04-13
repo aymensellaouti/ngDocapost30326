@@ -6,6 +6,8 @@ import { CurrencyPipe, DatePipe, UpperCasePipe } from '@angular/common';
 import { Btc2usdPipe } from '../../pipes/btc2usd-pipe';
 import { LoggerService } from '../../services/logger.service';
 import { HelloService } from '../../services/hello.service';
+import { TodoService } from '../../todo/service/todo.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cv-page',
@@ -33,9 +35,13 @@ export class CvPage {
   today = signal(new Date());
   loggerService = inject(LoggerService);
   helloService = inject(HelloService);
+  // Je demande une instance de TodoService
+  //todoService = inject(TodoService);
+  toastr = inject(ToastrService);
   constructor() {
     this.loggerService.log('cc je suis le cvComponent');
     this.helloService.sayHello();
+    this.toastr.info('Bienvenu dans notre cvTech')
   }
   getSelectedCv(cv: Cv) {
     this.selectedCv.set(cv);
