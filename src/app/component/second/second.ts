@@ -19,6 +19,7 @@ export class Second {
     this.name.set(this.acr.snapshot.params['name']);
   }
   goToCv() {
+    //  /cv
     this.router.navigate(['cv']);
   }
 }

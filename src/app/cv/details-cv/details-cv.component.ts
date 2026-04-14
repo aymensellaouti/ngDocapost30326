@@ -8,6 +8,8 @@ import { Cv } from "../model/cv";
 })
 export class DetailsCvComponent {
   cv = signal<Cv|null>(null);
-
+  // Récupérer l'id ensuite chercher le cv qui a cet id (dans le cvService)
+  // 1- Je trouve => je l'affiche
+  // 2- Redirige vers la liste des cvs
   constructor() {}
 }

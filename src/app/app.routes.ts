@@ -10,6 +10,7 @@ export const routes: Routes = [
   {path: '', component: First},
   {path: 'color', component: Color},
   {path: 'cv', component: CvPage},
+  // La route de détailsCv
   {path: 'todo', component: TodoComponent},
   {path: 'word', component: MiniWordComponent},
   {path: 'bonjour/:name', component: Second},
