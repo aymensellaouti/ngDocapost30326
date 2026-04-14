@@ -7,10 +7,12 @@ import { MiniWordComponent } from './directives/mini-word/mini-word.component';
 import { Second } from './component/second/second';
 import { DetailsCvComponent } from './cv/details-cv/details-cv.component';
 import { NF404 } from './components/nf404/nf404';
+import { Login } from './auth/login/login';
 
 export const routes: Routes = [
   {path: '', component: First},
   {path: 'color', component: Color},
+  {path: 'login', component: Login},
   {path: 'cv', component: CvPage},
   {path: 'cv/:id', component: DetailsCvComponent},
   // La route de détailsCv
