@@ -1,5 +1,5 @@
-import { Component } from "@angular/core";
-import { Cv } from "../model/cv.model";
+import { Component, signal } from "@angular/core";
+import { Cv } from "../model/cv";
 
 @Component({
   selector: 'app-details-cv',
@@ -7,7 +7,7 @@ import { Cv } from "../model/cv.model";
   styleUrls: ['./details-cv.component.css'],
 })
 export class DetailsCvComponent {
-  cv: Cv | null = null;
+  cv = signal<Cv|null>(null);
 
   constructor() {}
 }

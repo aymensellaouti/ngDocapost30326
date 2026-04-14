@@ -14,6 +14,8 @@ import { MiniWordComponent } from "./directives/mini-word/mini-word.component";
 import { Ngclass } from "./directives/ngclass/ngclass";
 import { TodoComponent } from "./todo/todo/todo.component";
 import { WeekTodoComponent } from "./todo/week-todo/week-todo.component";
+import { RouterOutlet } from "@angular/router";
+import { Navbar } from "./components/navbar/navbar";
 
 @Component({
   // Le sélécteur css qui identifie notre composant
@@ -21,7 +23,7 @@ import { WeekTodoComponent } from "./todo/week-todo/week-todo.component";
   // <app-root/>
   selector: 'app-root',
   // Ici je définis les dépendances de mon template
-  imports: [TtcComponent, Som, Pere, CvPage, Ngstyle, MiniWordComponent, Ngclass, TodoComponent, WeekTodoComponent],
+  imports: [TtcComponent, Som, Pere, CvPage, Ngstyle, MiniWordComponent, Ngclass, TodoComponent, WeekTodoComponent, RouterOutlet, Navbar],
   // Le fichier HTML que le composant gére
   templateUrl: './app.html',
   // C'est le CSS de CE COMPOSANT
