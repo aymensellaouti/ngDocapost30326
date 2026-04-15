@@ -25,7 +25,7 @@ export class CvPage {
   /**
    * @var la liste des cvs
    */
-  cvs = this.cvService.getCvs();
+  cvs = signal<Cv[]>([]);
   /**
    * @var représente le cv sélectionné
    */
@@ -39,6 +39,13 @@ export class CvPage {
   constructor() {
     this.loggerService.log('cc je suis le cvComponent');
     this.helloService.sayHello();
-    this.toastr.info('Bienvenu dans notre cvTech')
+    this.toastr.info('Bienvenu dans notre cvTech');
+    this.cvService.getCvs().subscribe({
+      next: (cvs) => this.cvs.set(cvs),
+      error: (e) => {
+        this.toastr.error(`Les données sont fictives merci de contacter l'admin`)
+        this.cvs.set(this.cvService.getFakeCvs())
+      }
+    })
   }
 }
