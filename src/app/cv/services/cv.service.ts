@@ -1,5 +1,6 @@
 import {  Injectable, signal } from '@angular/core';
 import { Cv } from '../model/cv';
+import { Subject } from 'rxjs';
 
 
 
@@ -15,6 +16,8 @@ export class CvService {
     new Cv(5, 'Cohen', 'David', 'Dev', '12345680', '         ', 20),
   ]);
   #selectedCv = signal<Cv | null>(null);
+  selectedCv$ = new Subject<Cv>();
+  // --------------------------------------------------->
 
   /**
    * Retourne la liste des cvs
@@ -38,6 +41,7 @@ export class CvService {
    */
   selectCv(cv: Cv) {
     this.#selectedCv.set(cv);
+    this.selectedCv$.next(cv);
   }
   /**
    *
