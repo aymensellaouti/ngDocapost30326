@@ -39,14 +39,11 @@ export class CvService {
   }
 
   deleteCvById(id: number): Observable<{count: number}> {
-    const headers = new HttpHeaders().set(
-      APP_CONST.httpHeadersKey,
-      localStorage.getItem(APP_CONST.authToken) ?? ''
-    );
+
     // const params = new HttpParams().set(cle, valeur)
-    return this.http.delete<{ count: number }>(APP_API.cv + id, {headers});
+    return this.http.delete<{ count: number }>(APP_API.cv + id);
   }
-  // admin@gmail.com   0000
+
   /**
    * retourne le selected Cv
    * @returns selectedCv: Cv
