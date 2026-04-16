@@ -9,10 +9,18 @@
       <div class="navbar-nav">
         <a class="nav-link" routerLink="/" routerLinkActive="active text-primary" [routerLinkActiveOptions]="{exact:true}">Home</a>
         <a class="nav-link" routerLink="/cv" routerLinkActive="active text-primary">cv</a>
+        @if (authService.isAuthenticated()) {
+        <a class="nav-link" routerLink="/cv/add" routerLinkActive="active text-primary">Add cv</a>
+        }
         <a class="nav-link" routerLink="/todo" routerLinkActive="active text-primary">todo</a>
         <a class="nav-link" routerLink="/word" routerLinkActive="active text-primary">word</a>
         <a class="nav-link" routerLink="/color" routerLinkActive="active text-primary">color</a>
-        <a class="nav-link" routerLink="/login" routerLinkActive="active text-primary">login</a>
+        @if (authService.isAuthenticated()) {
+          <a class="nav-link" (click)="logout()">logout</a>
+        } @else {
+          <a class="nav-link" routerLink="/login" routerLinkActive="active text-primary">login</a>
+        }
+
 
       </div>
     </div>

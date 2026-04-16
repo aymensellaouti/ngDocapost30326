@@ -5,6 +5,7 @@ import { CvService } from '../services/cv.service';
 import { APP_ROUTES } from '../../config/app-route.config';
 import { DefaultImagePipe } from '../pipes/default-image-pipe';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../../auth/services/auth';
 
 @Component({
   selector: 'app-details-cv',
@@ -15,6 +16,7 @@ import { ToastrService } from 'ngx-toastr';
 export class DetailsCvComponent {
   cv = signal<Cv | null>(null);
   cvService = inject(CvService);
+  authService = inject(AuthService);
   acr = inject(ActivatedRoute);
   router = inject(Router);
   toast = inject(ToastrService);
