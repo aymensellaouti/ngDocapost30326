@@ -40,7 +40,9 @@ export class CvPage {
     this.loggerService.log('cc je suis le cvComponent');
     this.helloService.sayHello();
     this.toastr.info('Bienvenu dans notre cvTech');
-    this.cvService.getCvs().subscribe({
+    this.cvService.getCvs()
+    .pipe()
+    .subscribe({
       next: (cvs) => this.cvs.set(cvs),
       error: (e) => {
         this.toastr.error(`Les données sont fictives merci de contacter l'admin`)

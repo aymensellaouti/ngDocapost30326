@@ -41,7 +41,6 @@ export class DetailsCvComponent {
           console.log(e);
         }
       });
-
     }
   }
 }
