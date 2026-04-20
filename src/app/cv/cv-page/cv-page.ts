@@ -10,6 +10,7 @@ import { TodoService } from '../../todo/service/todo.service';
 import { ToastrService } from 'ngx-toastr';
 import { CvService } from '../services/cv.service';
 import { EmbaucheComponent } from "../embauche/embauche.component";
+import { LOGGERS_INJECTION_TOKEN } from '../../injection tokens/loggers.inject-token';
 
 @Component({
   selector: 'app-cv-page',
@@ -33,12 +34,14 @@ export class CvPage {
   today = signal(new Date());
   loggerService = inject(LoggerService);
   helloService = inject(HelloService);
+  loggers = inject(LOGGERS_INJECTION_TOKEN);
   // Je demande une instance de TodoService
   //todoService = inject(TodoService);
   toastr = inject(ToastrService);
   constructor() {
-    this.loggerService.log('cc je suis le cvComponent');
+  //  this.loggerService.log('cc je suis le cvComponent');
     this.helloService.sayHello();
+    this.loggers.forEach(logger => logger.log('cc je suis le cvComponent'))
     this.toastr.info('Bienvenu dans notre cvTech');
     this.cvService.getCvs()
     .pipe()
