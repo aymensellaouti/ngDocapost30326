@@ -21,7 +21,6 @@ export class Login {
   login(credentials: Credentials) {
     this.authService.login(credentials).subscribe({
       next: (response) => {
-        localStorage.setItem(APP_CONST.authToken, response.id);
         this.router.navigate([APP_ROUTES.cv]);
       },
       error: (e) => {

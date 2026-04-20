@@ -3,7 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { APP_API } from '../../config/app-api.config';
 import { Credentials } from '../dto/credentials.dto';
 import { LoginResonse } from '../dto/login-response.dto';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { APP_CONST } from '../../config/constantes.config';
 
 @Injectable({
@@ -13,7 +13,13 @@ export class AuthService {
   http = inject(HttpClient);
 
   login(credentials: Credentials): Observable<LoginResonse> {
-    return this.http.post<LoginResonse>(APP_API.login, credentials);
+    return this.http.post<LoginResonse>(APP_API.login, credentials).pipe(
+      tap(
+        response => {
+          localStorage.setItem(APP_CONST.authToken, response.id);
+        }
+      )
+    );
   }
 
   logout() {

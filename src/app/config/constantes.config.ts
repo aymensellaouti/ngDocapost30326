@@ -3,5 +3,6 @@ export const APP_CONST = {
   defaultImage: 'cv.png',
   httpParmasKey: 'access_token',
   httpHeadersKey: 'Authorization',
-  authToken: 'authToken'
+  authToken: 'authToken',
+  env: 'prod'
 };

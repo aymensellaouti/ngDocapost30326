@@ -7,6 +7,10 @@ import { HelloService } from './services/hello.service';
 import { provideToastr } from 'ngx-toastr';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from './auth/interceptors/auth-interceptor';
+import { Logger2Service } from './services/logger2.service';
+import { CvService } from './cv/services/cv.service';
+import { APP_CONST } from './config/constantes.config';
+import { FakeCvService } from './cv/services/fake-cv.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,7 +21,11 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(
       withInterceptors([authInterceptor])
     ),
-    LoggerService,
+    {provide: CvService, useClass: APP_CONST.env == 'dev' ? FakeCvService: CvService},
+    // Quand on te demandera un LoggerService, fournit une instance de Logger2Service
+    {provide: LoggerService, useClass: Logger2Service},
+    // Quand on te demandera un LoggerService, fournit une instance de LoggerService
+    {provide: LoggerService, useClass: LoggerService},
     //HelloService
     // // Meme si je n'avais pas utilisé le service il sera instancié et il sera dans le build final
     // LoggerService
