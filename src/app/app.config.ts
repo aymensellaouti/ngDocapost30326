@@ -31,6 +31,7 @@ export const appConfig: ApplicationConfig = {
     {provide: LoggerService, useClass: Logger2Service},
     // Quand on te demandera un LoggerService, fournit une instance de LoggerService
     {provide: LoggerService, useClass: LoggerService},
+    {provide: 'LE TOKEN', useFactory: () => {}}
     //HelloService
     // // Meme si je n'avais pas utilisé le service il sera instancié et il sera dans le build final
     // LoggerService

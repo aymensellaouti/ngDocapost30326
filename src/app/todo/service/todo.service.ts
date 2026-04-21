@@ -5,7 +5,7 @@ import { HttpClient } from "@angular/common/http";
 import { APP_API } from "../../config/app-api.config";
 import { TodoApi } from "../model/todo-api";
 import { Observable } from "rxjs";
-
+import {v4 as uuidV4} from "uuid";
 @Injectable({
   providedIn: 'root',
 })
@@ -36,6 +36,7 @@ export class TodoService {
    *
    */
   addTodo(todo: Todo): void {
+    todo.id = uuidV4();
     this.#todos.update(
       (todos) => [...todos, todo]
     )
