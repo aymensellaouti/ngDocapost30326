@@ -22,15 +22,16 @@ export class DetailsCvComponent {
   toast = inject(ToastrService);
   constructor() {
     // Récupérer l'id ensuite chercher le cv qui a cet id (dans le cvService)
-    const id = this.acr.snapshot.params['id'];
+    //const id = this.acr.snapshot.params['id'];
     // 1- Je trouve => je l'affiche
     //this.cv.set(this.cvService.findCvById(id));
-    this.cvService.getCvById(id).subscribe({
-      next: (cv) => this.cv.set(cv),
-      error: (e) => this.router.navigate([APP_ROUTES.cv]),
-    });
+    // this.cvService.getCvById(id).subscribe({
+    //   next: (cv) => this.cv.set(cv),
+    //   error: (e) => this.router.navigate([APP_ROUTES.cv]),
+    // });
     // 2- Redirige vers la liste des cvs
     //if (!this.cv()) this.router.navigate([APP_ROUTES.cv]);
+    this.cv.set(this.acr.snapshot.data['cv']);
   }
 
   delete() {

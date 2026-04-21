@@ -13,7 +13,8 @@ import { APP_CONST } from './config/constantes.config';
 import { FakeCvService } from './cv/services/fake-cv.service';
 import { LOGGERS_INJECTION_TOKEN } from './injection tokens/loggers.inject-token';
 import { Logger3Service } from './services/logger3.service';
-
+import { UUID_INJECTION_TOKEN } from './injection tokens/uuid.injection-token';
+import {v4 as uuidV4} from "uuid";
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
@@ -31,6 +32,7 @@ export const appConfig: ApplicationConfig = {
     {provide: LoggerService, useClass: Logger2Service},
     // Quand on te demandera un LoggerService, fournit une instance de LoggerService
     {provide: LoggerService, useClass: LoggerService},
+    {provide: UUID_INJECTION_TOKEN, useValue: uuidV4 },
     {provide: 'LE TOKEN', useFactory: () => {}}
     //HelloService
     // // Meme si je n'avais pas utilisé le service il sera instancié et il sera dans le build final

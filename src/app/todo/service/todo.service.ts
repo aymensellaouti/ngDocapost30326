@@ -5,7 +5,8 @@ import { HttpClient } from "@angular/common/http";
 import { APP_API } from "../../config/app-api.config";
 import { TodoApi } from "../model/todo-api";
 import { Observable } from "rxjs";
-import {v4 as uuidV4} from "uuid";
+import { UUID_INJECTION_TOKEN } from "../../injection tokens/uuid.injection-token";
+
 @Injectable({
   providedIn: 'root',
 })
@@ -13,6 +14,7 @@ export class TodoService {
   #todos = signal<Todo[]>([]);
   logger = inject(LoggerService);
   http = inject(HttpClient);
+  uuid = inject(UUID_INJECTION_TOKEN);
 
   //todos = this.#todos.asReadonly();
   /**
@@ -36,7 +38,7 @@ export class TodoService {
    *
    */
   addTodo(todo: Todo): void {
-    todo.id = uuidV4();
+    todo.id = this.uuid();
     this.#todos.update(
       (todos) => [...todos, todo]
     )
