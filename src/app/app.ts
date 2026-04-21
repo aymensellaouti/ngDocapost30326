@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { First } from "./component/first/first";
 import { Second } from "./component/second/second";
 import { Color } from './component/color/color';
@@ -14,10 +14,11 @@ import { MiniWordComponent } from "./directives/mini-word/mini-word.component";
 import { Ngclass } from "./directives/ngclass/ngclass";
 import { TodoComponent } from "./todo/todo/todo.component";
 import { WeekTodoComponent } from "./todo/week-todo/week-todo.component";
-import { RouterOutlet } from "@angular/router";
+import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router, RouterOutlet } from "@angular/router";
 import { Navbar } from "./components/navbar/navbar";
 import { TestForm } from "./form/test-form/test-form";
 import { TestRxJs } from "./rxjs/test-rx-js/test-rx-js";
+import { NgxUiLoaderModule, NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   // Le sélécteur css qui identifie notre composant
@@ -25,10 +26,28 @@ import { TestRxJs } from "./rxjs/test-rx-js/test-rx-js";
   // <app-root/>
   selector: 'app-root',
   // Ici je définis les dépendances de mon template
-  imports: [TtcComponent, Som, Pere, CvPage, Ngstyle, MiniWordComponent, Ngclass, TodoComponent, WeekTodoComponent, RouterOutlet, Navbar, TestForm, TestRxJs],
+  imports: [RouterOutlet, Navbar, NgxUiLoaderModule],
   // Le fichier HTML que le composant gére
   templateUrl: './app.html',
   // C'est le CSS de CE COMPOSANT
   styleUrl: './app.css',
 })
-export class App {}
+export class App {
+  ngxService = inject(NgxUiLoaderService);
+  router = inject(Router);
+  constructor() {
+    this.router.events.subscribe({
+     next: (event) => {
+      if(event instanceof NavigationStart) {
+        this.ngxService.start(); // start foreground spinner of the master loader with 'default' taskId
+      } else if (
+        event instanceof NavigationEnd ||
+        event instanceof NavigationError ||
+        event instanceof NavigationCancel
+      ) {
+        this.ngxService.stop(); // stop foreground spinner of the master loader with 'default' taskId
+      }
+     }
+    })
+  }
+}
