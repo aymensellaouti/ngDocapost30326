@@ -1,5 +1,5 @@
 import { ApplicationConfig, importProvidersFrom, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter, withDebugTracing } from '@angular/router';
+import { PreloadAllModules, provideRouter, withDebugTracing, withPreloading } from '@angular/router';
 
 import { routes } from './app.routes';
 import { LoggerService } from './services/logger.service';
@@ -16,6 +16,7 @@ import { Logger3Service } from './services/logger3.service';
 import { UUID_INJECTION_TOKEN } from './injection tokens/uuid.injection-token';
 import {v4 as uuidV4} from "uuid";
 import { NgxUiLoaderConfig, NgxUiLoaderModule } from 'ngx-ui-loader';
+import { CustomStrategy } from './preloading-strategies/custom.preloading-strategy';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   // your configuration here
@@ -25,7 +26,8 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes, withDebugTracing()),
+    // provideRouter(routes, withDebugTracing(), withPreloading(PreloadAllModules)),
+    provideRouter(routes, withPreloading(CustomStrategy)),
     provideToastr(),
     provideHttpClient(withInterceptors([authInterceptor])),
     { provide: LOGGERS_INJECTION_TOKEN, useClass: LoggerService, multi: true },
