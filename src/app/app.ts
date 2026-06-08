@@ -36,18 +36,18 @@ export class App {
   ngxService = inject(NgxUiLoaderService);
   router = inject(Router);
   constructor() {
-    this.router.events.subscribe({
-     next: (event) => {
-      if(event instanceof NavigationStart) {
-        this.ngxService.start(); // start foreground spinner of the master loader with 'default' taskId
-      } else if (
-        event instanceof NavigationEnd ||
-        event instanceof NavigationError ||
-        event instanceof NavigationCancel
-      ) {
-        this.ngxService.stop(); // stop foreground spinner of the master loader with 'default' taskId
-      }
-     }
-    })
+    // this.router.events.subscribe({
+    //  next: (event) => {
+    //   if(event instanceof NavigationStart) {
+    //     this.ngxService.start(); // start foreground spinner of the master loader with 'default' taskId
+    //   } else if (
+    //     event instanceof NavigationEnd ||
+    //     event instanceof NavigationError ||
+    //     event instanceof NavigationCancel
+    //   ) {
+    //     this.ngxService.stop(); // stop foreground spinner of the master loader with 'default' taskId
+    //   }
+    //  }
+    // })
   }
 }
